@@ -8,7 +8,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.datalogic</groupId>
+	<groupId>it.antoniop</groupId>
 	<artifactId>mysql-data-reader</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mysql-data-reader</name>
