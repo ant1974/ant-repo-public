@@ -17,6 +17,7 @@ Our primary goals are:
 
 
 <br/><br/>
+
 Starters
 ============================
 [Using boot starter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-starter)
@@ -203,6 +204,7 @@ Starter for using Undertow as the embedded servlet container. An alternative to 
 
 
 <br/><br/>
+
 Configuration Classes
 ============================
 * [Auto Configuration](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-auto-configuration)
@@ -244,6 +246,7 @@ A single @SpringBootApplication annotation can be used to enable those three fea
 
 
 <br/><br/>
+
 Running Your Application
 ============================
 Running from an IDE
@@ -268,6 +271,7 @@ as they do in your IDE. The following example shows a typical Maven command to r
 
 <br/>
 <br/>
+
 Exploring  Maven dependencies
 ================================
 
