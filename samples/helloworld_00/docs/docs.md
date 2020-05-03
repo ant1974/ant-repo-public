@@ -16,7 +16,7 @@ Our primary goals are:
 
 
 
-
+<br/><br/>
 Starters
 ============================
 [Using boot starter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-starter)
@@ -51,7 +51,7 @@ Starter for JMS messaging using Apache Artemis
 Starter for using Spring Batch
 
 * ***spring-boot-starter-cache***  
-Starter for using Spring Framework’s caching support
+Starter for using Spring Framework's caching support
 
 * ***spring-boot-starter-cloud-connectors***  
 Starter for using Spring Cloud Connectors which simplifies connecting to services in cloud platforms like Cloud Foundry and Heroku. Deprecated in favor of Java CFEnv
@@ -132,16 +132,16 @@ Starter for JTA transactions using Atomikos
 Starter for JTA transactions using Bitronix
 
 * ***spring-boot-starter-mail***  
-Starter for using Java Mail and Spring Framework’s email sending support
+Starter for using Java Mail and Spring Framework's email sending support
 
 * ***spring-boot-starter-mustache***  
 Starter for building web applications using Mustache views	
 
 * ***spring-boot-starter-oauth2-client***  
-Starter for using Spring Security’s OAuth2/OpenID Connect client features
+Starter for using Spring Security's OAuth2/OpenID Connect client features
 
 * ***spring-boot-starter-oauth2-resource-server***  
-Starter for using Spring Security’s OAuth2 resource server features
+Starter for using Spring Security's OAuth2 resource server features
 
 * ***spring-boot-starter-quartz***  
 Starter for using the Quartz scheduler
@@ -168,17 +168,16 @@ Starter for building web, including RESTful, applications using Spring MVC. Uses
 Starter for using Spring Web Services
 
 * ***spring-boot-starter-webflux***  
-Starter for building WebFlux applications using Spring Framework’s Reactive Web support
+Starter for building WebFlux applications using Spring Framework's Reactive Web support
 
 * ***spring-boot-starter-websocket***  
-Starter for building WebSocket applications using Spring Framework’s WebSocket support
-
+Starter for building WebSocket applications using Spring Framework's WebSocket support
 
 
 Spring Boot production starters
 ---------------
 * ***<span style="color: red; font-size: 14pt">spring-boot-starter-actuator</span>***  
-Starter for using Spring Boot’s Actuator which provides production ready features to help you monitor and manage your application
+Starter for using Spring Boot's Actuator which provides production ready features to help you monitor and manage your application
 
 
 Spring Boot technical starters  
@@ -203,7 +202,7 @@ Starter for using Undertow as the embedded servlet container. An alternative to 
 
 
 
-
+<br/><br/>
 Configuration Classes
 ============================
 * [Auto Configuration](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-auto-configuration)
@@ -235,7 +234,7 @@ without any arguments. All of your application components (@Component, @Service,
 Many Spring Boot developers like their apps to use auto-configuration, component scan and be able to define extra configuration on their "application class". 
 A single @SpringBootApplication annotation can be used to enable those three features, that is:
 
-	@EnableAutoConfiguration: enable Spring Boot’s auto-configuration mechanism  
+	@EnableAutoConfiguration: enable Spring Boot's auto-configuration mechanism  
 
 	@ComponentScan: enable @Component scan on the package where the application is located (see the best practices)  
 
@@ -244,7 +243,7 @@ A single @SpringBootApplication annotation can be used to enable those three fea
 
 
 
-
+<br/><br/>
 Running Your Application
 ============================
 Running from an IDE
@@ -267,8 +266,11 @@ as they do in your IDE. The following example shows a typical Maven command to r
 
 * `$ mvnw spring-boot:run`
 
-
-
+<br/>
+<br/>
+Exploring  Maven dependencies
+============================
+`mvnw dependency:tree`
 
 
 
