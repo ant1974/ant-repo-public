@@ -269,8 +269,9 @@ as they do in your IDE. The following example shows a typical Maven command to r
 <br/>
 <br/>
 Exploring  Maven dependencies
-============================
-`mvnw dependency:tree`
+================================
+
+* `mvnw dependency:tree`
 
 
 

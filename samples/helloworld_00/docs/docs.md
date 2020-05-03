@@ -266,8 +266,8 @@ as they do in your IDE. The following example shows a typical Maven command to r
 
 * `$ mvnw spring-boot:run`
 
-
-
+<br/>
+<br/>
 Exploring  Maven dependencies
 ================================
 
