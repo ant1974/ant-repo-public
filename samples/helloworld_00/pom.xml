@@ -28,12 +28,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			
+			<!--  Exclude    org.junit.vintage ..... JUnit 5 module to RUN tests using  JUnit 3 and JUnit4 API -->
+			<!--
 			<exclusions>
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+ 			-->
+ 			
 		</dependency>
 	</dependencies>
 

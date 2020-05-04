@@ -36,6 +36,12 @@ public class MysqlDataReaderApplication  implements CommandLineRunner  {
 	private DummiestQryRowMapper dummiestQryRowMapper;
 	
 	
+	public static void main(String[] args) {
+		SpringApplication.run(MysqlDataReaderApplication.class, args);
+	}
+	
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
 		LOG.info("*** Let's query tables");
@@ -76,9 +82,6 @@ public class MysqlDataReaderApplication  implements CommandLineRunner  {
 	}
 
 	
-	public static void main(String[] args) {
-		SpringApplication.run(MysqlDataReaderApplication.class, args);
-	}
 
 	
 	

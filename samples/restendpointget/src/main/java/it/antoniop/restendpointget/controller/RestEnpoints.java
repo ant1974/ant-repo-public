@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestEnpoints {
 
 
+	// no "method" attribute  means  =>  defaulting to GET
     @RequestMapping("/course")
     public Course getEndpoint(@RequestParam(value = "name", defaultValue = "Biology", required = false) String name,
             				  @RequestParam(value = "credits", defaultValue = "2", required = false) int credits) {
