@@ -256,18 +256,18 @@ Import steps vary depending on your IDE and build system. Most IDEs can import M
 
 Running as a Packaged Application
 ---------------
-* `$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar`
+* `java -jar target/myapplication-0.0.1-SNAPSHOT.jar`
 
-* `$ java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n -jar target/myapplication-0.0.1-SNAPSHOT.jar`
+* `java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n -jar target/myapplication-0.0.1-SNAPSHOT.jar`
 
-* `$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar --server.port=8082`
+* `java -jar target/myapplication-0.0.1-SNAPSHOT.jar --server.port=8082`
 
 Using the Spring Maven Plugin
 ---------------
 The Spring Boot Maven plugin includes a run goal that can be used to quickly compile and run your application. Applications run in an exploded form, 
 as they do in your IDE. The following example shows a typical Maven command to run a Spring Boot application:
 
-* `$ mvnw spring-boot:run`
+* `mvnw spring-boot:run`
 
 <br/>
 <br/>
