@@ -38,6 +38,8 @@ public class EmployeeController {
 		return new ResponseEntity<EmployeeEntity>(entity, new HttpHeaders(), HttpStatus.OK);
 	}
 
+	
+	// Use "Key/Value pairs" in form-data  ....... as in POST-MAN
 	@PostMapping
 	public ResponseEntity<EmployeeEntity> createOrUpdateEmployee(EmployeeEntity employee)
 			throws RecordNotFoundException {
@@ -50,7 +52,8 @@ public class EmployeeController {
 	public HttpStatus deleteEmployeeById(@PathVariable("id") Long id) throws RecordNotFoundException {
 		//
 		service.deleteEmployeeById(id);
-		return HttpStatus.FORBIDDEN;
+		// return HttpStatus.FORBIDDEN;
+		return HttpStatus.OK;
 	}
 
 }

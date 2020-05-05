@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+
+	<!-- <logger name="com.datalogic" level="DEBUG" additivity="false">  -->
+	<logger name="it.antoniop.springdatajpa" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+	</logger>
+	<logger name="it.antoniop.springdatajpa" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE"/>
+	</logger>
+
+<!-- 	
+	<springProfile name="dev,staging">
+		<logger name="com.datalogic" level="DEBUG" additivity="false">
+        	<appender-ref ref="CONSOLE"/>
+        	<appender-ref ref="FILE"/>
+		</logger>
+
+	</springProfile>
+	<springProfile name="production">
+		<logger name="com.datalogic" level="WARN" additivity="false">
+			<appender-ref ref="FILE" />
+		</logger>
+	</springProfile>
+-->	
+</configuration>
