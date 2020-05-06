@@ -19,7 +19,7 @@ import it.antoniop.springdatajpa.service.EmployeeService;
 
 @RestController
 @RequestMapping("/employees")
-public class EmployeeController {
+public class EmployeeRestController {
 
 	@Autowired
 	EmployeeService service;
