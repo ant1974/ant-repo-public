@@ -1,2 +1,2 @@
 # AntonioP
-This repository contain all project related to Spring Boot
+This repository contains projects related to Spring Boot
