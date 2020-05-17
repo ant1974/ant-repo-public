@@ -12,11 +12,11 @@ public class CourseConfiguration {
 
     private String name;
 
-    private int chapterCount;
+    private int credits;
 
-    private int rating;
+    private int year;
 
-    private String author;
+    private String professor;
 
 
     public String getName() {
@@ -27,27 +27,28 @@ public class CourseConfiguration {
         this.name = name;
     }
 
-    public int getChapterCount() {
-        return chapterCount;
+    
+    public int getCredits() {
+		return credits;
+	}
+    
+    public void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+    public int getYear() {
+        return year;
     }
 
-    public void setChapterCount(int chapterCount) {
-        this.chapterCount = chapterCount;
+    public void setYear(int rating) {
+        this.year = rating;
     }
 
-    public int getRating() {
-        return rating;
+    public String getProfessor() {
+        return professor;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setProfessor(String aProf) {
+        this.professor = aProf;
     }
 }

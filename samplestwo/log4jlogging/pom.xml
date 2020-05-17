@@ -29,18 +29,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
+				<!--   NO  LOG BACK .. default spring boot logger  !!!!!!!!!!!!!  -->
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
+				<!--   NO  LOG BACK .. default spring boot logger  !!!!!!!!!!!!!  -->
 			</exclusions>
 		</dependency>
 
-		<!-- Add Log4j2 Dependency -->
+		<!-- Adding  Log4j2 Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+		<!-- Adding  Log4j2 Dependency -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

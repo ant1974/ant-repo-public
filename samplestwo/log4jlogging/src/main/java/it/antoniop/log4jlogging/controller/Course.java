@@ -1,16 +1,17 @@
 package it.antoniop.log4jlogging.controller;
 
+
 /**
  * 
  */
 public class Course {
 
     private String name;
-    private int chapterCount;
+    private int credits;
 
-    public Course(String name, int chapterCount) {
+    public Course(String name, int credits) {
         this.name = name;
-        this.chapterCount = chapterCount;
+        this.credits = credits;
     }
 
     public String getName() {
@@ -21,11 +22,24 @@ public class Course {
         this.name = name;
     }
 
-    public int getChapterCount() {
-        return chapterCount;
+    public int getCredits() {
+    	return credits;
     }
 
-    public void setChapterCount(int chapterCount) {
-        this.chapterCount = chapterCount;
-    }
+    public void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Course [name=");
+		builder.append(name);
+		builder.append(", credits=");
+		builder.append(credits);
+		builder.append("]");
+		return builder.toString();
+	}
+    
+    
 }
