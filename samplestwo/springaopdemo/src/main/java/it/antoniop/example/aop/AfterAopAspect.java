@@ -19,14 +19,14 @@ public class AfterAopAspect {
     private Logger logger = LoggerFactory.getLogger(AfterAopAspect.class);
 
     @AfterReturning(value = "execution(* it.antoniop.example.aop.business.*.*(..))", returning = "result")
-    public void afterReturning(JoinPoint joinPoint, Object result) {
-        logger.info("{} returned with value {}", joinPoint, result);
+    public void doItAfterReturning(JoinPoint joinPoint, Object result) {
+        logger.info(" **@AfterReturning** '{}' returned with value '{}'", joinPoint, result);
     }
     
 
     @After(value = "execution(* it.antoniop.example.aop.business.*.*(..))")
-    public void after(JoinPoint joinPoint) {
-        logger.info("after execution of {}", joinPoint);
+    public void pleaseDotItAfter(JoinPoint joinPoint) {
+        logger.info(" **@After** after execution of '{}'", joinPoint);
 
     }
 	

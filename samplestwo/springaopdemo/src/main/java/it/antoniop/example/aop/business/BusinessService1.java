@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.antoniop.example.aop.data.Dao1;
+import it.antoniop.example.aop.model.Dao1;
 
 @Service
-public class Business1 {
+public class BusinessService1 {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 

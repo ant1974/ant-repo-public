@@ -1,4 +1,4 @@
-package it.antoniop.example.aop.data;
+package it.antoniop.example.aop.model;
 
 import org.springframework.stereotype.Repository;
 
