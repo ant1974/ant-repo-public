@@ -1,0 +1,176 @@
+﻿DOMANDE
+=============
+
+
+
+18:33
+[DOMANDA] Qual'è la differenza più importante fra l'inizializzazione di un progetto con Spring boot e uno con solo Spring? Nel senso, oltre alle facilitazioni che Spring boot offre, ci sono anche grandi cambiamenti a livello di gestione dei vari componenti, lato framework? {RISPOSTA GIA’ DATA}
+----
+CHI PARTE  DA ZERO CON UN NUOVO PROGETTO PARTA CON "Spring" USATO ATTRAVERSO "Spring boot" .... SI GUADAGNA TEMPO E SI EVITANO MAL DI TESTA :-) .... CHI HA GIA' UN PROGETTO AVVIATO CON SPRING CONTINUI CON SPRING SENZA "Spring boot".
+
+
+18:34
+[DOMANDA] bisogna sempre compilare con il maven wrapper?
+----
+NO. SI PUò ANCHE USARE direttamente MAVEN (O GRADLE SE SI USASSE GRADLE). MA:
+1) MAVEN WRAPPER è UNA FACILITY CHE SCENDE GRATIS CREANDO IL PROGETTO VUOTO DA ZERO CON QUANTO INDICATO NELLE ULTIME DUE SLIDE (REF SITO https://start.spring.io/)
+2) LO CONSIGLIO POICHE' è MOLTO CONVENIENTE PER CHI, COME ME, HA IN SVILUPPO PROGETTI CON MAVEN2 E CON MAVEN3 NELLA STESSA MACCHINA (FISICA O VIRTUALE) CON L'AMBIENTE (SYSOP) CONFIGURATO (VARIABILI D'AMBIENTE PATH E M2_HOME) PER LAVORARE CON MAVEN2.. ATTRAVERSO maven wrapper IL COMANDO MVNW.CMD (MWNW IN LINUX) CAPISCE DA SOLO CHE VERSIONE DI MAVEN SI DICHIARA VOLER USARE NEL POM.XML ED IN PIù SE TALE VERSIONE NON è PRESENTE NEL SISTEMA NE EFFETTUA IL DOWNLOAD. SONO FUNZIONALITA' NON DA POCO CHE TOLGONO PROBLEMI LEGATI ALL'USO DI MAVEN... 
+ 
+
+18:35
+[DOMANDA] possiamo imparare lo stivale primaverile senza conoscere alcuna idea di Spring Framework ??
+---------------------
+DOMANDA INTERESSANTE .. Sì (IN PARTE) E NO ...
+Sì PERCHè SE NON SI è INTERESSATI A COME FUNZIONANO (AL PERCHè FUNZIONANO) LE COSE E CI SI FIDA DEGLI IDEATORI DI Spring boot E Spring, USANDO "PATTERN RIPETITIVI" SI POTRA' SVILUPPARE DEL CODICE DI QUALITà ...
+No PERCHè DI FATTO SPRING BOOT è UNA ESTENSIONE DI SPRING (O MEGLIO è UN FRAMEWORK CHE "WRAPP-A" IL FRAMEWORK SPRING, LO AVVOLGE NASCONDENDONE LE CONFIGURAZIONE ESSENZIALEMNTE)
+... SI USA SPRING BOOT PER USARE PIù FACILMENTE/RAPIDAMENTE SPRING ... SE USO SPRING BOOT SENZA AVERE CONOSCENZE SU SPRING DOVRò OPERARE DI COPIA INCOLLA E A TENTATIVI SENZA AVERE PIENO CONTROLLO DEL CODICE CHE SCRIVO.
+QUELLO CHE COMUNQUE RITENGO SIA VERAMENTE NECESSARIO è "SOLO" LA CONOSCENZA DELLA IoC/DI  (USO/SIGNIFICATO DI @Service ... @Repository .. @Component .. @Autowired ...)
+
+
+
+18:36
+[DOMANDA] è possibile configurare nell'application.prop il nome del context a cui vogliamo che l'applicazione risponda?
+---------------------
+Sì, NE HO PARLATO E NE AVETE ESEMPIO IN
+
+embeddedTomcat_03/src/main/resources/application.properties]  (server.servlet.context-path=/fatjar) [COMENTATO MA C'E']
+restendpointget/src/main/resources/application.properties (server.servlet.context-path=/restget)
+springdatajpa_20/src/main/resources/application.properties (server.servlet.context-path=/crud)
+
+ 
+
+
+18:38
+[DOMANDA] E' possibile inserire un progetto spring boot come modulo in un progetto maven, avendo già come parent un prgetto spring?
+---------------------
+Sì CERTO ESEMPIO AI LINK DI stackoverflow
+https://stackoverflow.com/questions/24579692/multi-module-maven-with-spring-boot
+COSA IMPORTANTE È USARE UN CUSTOM PARENT (https://www.baeldung.com/spring-boot-dependency-management-custom-parent) 
+NEL pom.xml DEL MODULO CHE USA SPRING BOOT...
+
+ 
+
+
+18:45
+[DOMANDA] Per produrre solo un war senza il tomcat, è comunque preferibile usare spring boot anziché spring framework? Se sì, per quali motivi?
+---------------------
+DOMANDA MAL POSTA ... USANDO SPRING BOOT POSSO SCEGLIERE SE CREARE UN FAT JAR CON TOMCAT EMBEDDED OPPURE UN WAR DA USARE IN UN TOMCAT ESTERNO.
+SE USO DIRETTAMENTE SPRING FRAMEWORK SENZA SPRING BOOT POSSO SOLO CREARE UN WAR DA USARE IN UN TOMCAT ESTERNO.
+SE PARTO COL PROGETTO DA ZERO, SARÀ COMUNQUE PREFERIBILE USARE SPRING CON SPRING BOOT PERCHè SEMPLIFICA LE COSE (SEMPLIFICA L'USO DI SPRING)
+
+ 
+
+18:52
+[DOMANDA] Può usare un exclude nel pom se non vuole il tomcat ?
+---------------------
+Sì, VERO è CIO' CHE HO MOSTRATO PARLANDO DEL SECONDO ESEMPIO   ant-repo-public/samples/externalwar_04/
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+L'ESCLUSIONE DI "tomcat" è DATA DALLA STRINGA "provided" COME CORPO DEL TAG "scope"
+
+
+ 
+
+19:00
+[DOMANDA] Esiste una configurazione per restituire un errore in caso di parametri che non sono presenti nella firma del metodo (come nell'esempio in cui la parola credits era sbagliata)?
+---------------------
+DOMANDA SU SPRING-MVC.
+VA PROGRAMMATA AD HOC, SE SI VUOLE RENDERE UNO STATUS HTTP DI ERRORE USARE L'APPROCCIO DELLA CLASSE 
+	ant-repo-public/samples/springdatajpa_20/src/main/java/it/antoniop/springdatajpa/exception/RecordNotFoundException.java
+ALTRIMENTI SI VEDA (REF A WEB PATH /error)
+https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/web.html#mvc-exceptionhandlers
+
+
+
+18:59
+[DOMANDA] è quello che cercavo di capire, che forse nella mia domanda non sono riuscito ad esprimere bene: secondo te quali sono i vantaggi nell'utilizzare Spring boot al posto del solo Spring (oltre alle facilitazioni tra cui il tomcat embedded)
+---------------------
+SOSTANZIALMENTE CHI PARTE DA ZERO CON UN PROGETTO DOVREBBE PARTIRE USANDO Spring CON (O MEGLIO "ATTRAVERSO") Spring boot PERCHè DOVRA' SCRIVERE MOLTE MENO CONFIGURAZIONI ... CHI ABBIA USATO O VISTO USARE SPRING (O MEGLIO SPRING PER WEB APP) SA CHE VI SARà MOLTO CHE CON LA AGGIUNTA DI Spring boot NON ANDRà FATTO E NON DARà PROBLEMI... QUALCHE ESEMPIO:
+- GESTIONE CON MAVEN DI DOZZINE DI JAR DI LIBRERIA  (CON SPRING BOOT BASTA USARE QUALCHE "STARTER")
+- CONFIGURAZIONE DELLA INIT DI SPRING NEL WEB.XML (CON SPRING BOOT ZERO EFFORT)
+- CONFIGURAZIONE DELLA DispatcherServlet SE SI USA SPRING-REST/SPRING-MVC (CON SPRING BOOT ZERO EFFORT)
+- CONFIGURAZIONE DI SESSION FACTORY PER JPA/ORM (CON SPRING BOOT ZERO EFFORT)
+- CONFIGURAZIONE DI TRANSACTION MANAGER PER JDBC CONNNECTIONS (CON SPRING BOOT ZERO EFFORT)
+- CONFIGURAZIONE DI SQL CONNNECTIONS POOL (CON SPRING BOOT ZERO EFFORT)
+- CONFIGURAZIONE DEL PATTERN "OPEN SESSION IN VIEW" (CON SPRING BOOT ZERO EFFORT)
+
+
+
+
+19:15
+[DOMANDA] Quale connection pool viene usata con jpa?
+---------------------
+HIKARICP  -  https://github.com/brettwooldridge/HikariCP
+HIKARICP VIENE USATO/INCLUSO IN MODO IMPLICITO USANDO LO STARTER "SPRING-BOOT-STARTER-JDBC" OPPURE LO STARTER "SPRING-BOOT-STARTER-DATA-JPA"
+
+SPRING BOOT CERCA HIKARICP
+> se HIKARICP non viene trovato (PERCHÈ ESCLUSO CON TAG  <exclusions><exclusion>...</exclusion></exclusions> NEL POM.XML)
+	> SI CERCA  "TOMCAT-JDBC"  https://tomcat.apache.org/tomcat-9.0-doc/jdbc-pool.html#Common_Attributes
+		> SE TOMCAT-JDBC NON VIENE TROVATO SI CERCA  "COMMONS-DBCP2"  https://commons.apache.org/proper/commons-dbcp/
+...........
+A LINK SEGUENTE È SPIEGATO L'ALGORITMO CHE SPRING BOOT USA PER AUTO-CONFIGURARE UN JDBC CONNECTION-POOL E COME USARNE ALTRI (come AD ESEMPIO C3P0)
+https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/reference/htmlsingle/#boot-features-connect-to-production-database
+
+
+
+19:28
+[DOMANDA] è possibile cambiare il livello di output di visualizzazione dei log? Se volessi vedere solo i log a INFO come dovrei esplicitarlo?
+---------------------
+SI VEDANO FILES  application.properties  E  logback-spring.xml  IN 
+ant-repo-public/samples/springdatajpa_20/src/main/resources
+ED IL FILE
+ant-repo-public/samples/restendpointpost/src/main/resources/application.properties
+ 
+
+19:30
+[DOMANDA] Se lanciassi la run del DummiestQryRowMapper da un controller, senza che l'application server si blocchi e lanciando il processo in background, come dovrei dichiarare il @Component? E' possibile?
+---------------------
+DOMANDA NON CHIARA ... INTERPRETO ...  
+L'ESEMPIO IN CUI HO USATO LA CLASSE DA ME CHIAMATA "DummiestQryRowMapper" è UN "COMMANDLINERUNNER" QUINDI NON SI PUò PARLARE DI "application server"
+L'ESEMPIO è MOLTO BANALE ... è UNA APPLICAZIONE STANDALONE CHE PARTE DA RIGA DI COMANDO ESEGUE DUE STATEMENT SQL E SI FERMA, CONCLUDE ED ESCE.
+SE USASSI LA CLASSE DummiestQryRowMapper PER ELABORARE DATI ESTRATTI DA DATABASE AVENDO DEFINITO UN LAYER DI TIPO CONTROLLER IN UNA WEB APP CHE VIVE IN UN 
+APPLICATION SERVER (EMBEDDED NEL FAT JAR O ESTERNO) AVREI DEL CODICE DEL TIPO:
+
+
+@Controller
+@RequestMapping("/")
+public class SampleMvcController {
+	
+	@Autowired
+	SampleService service;
+	
+	...
+}
+
+@Service
+public class SampleService {
+
+	@Autowired
+	SampleRepository repository;
+	
+	...
+}
+
+@Repository
+public class SampleRepository  {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	@Autowired
+	private DummiestQryRowMapper dummiestQryRowMapper;
+	
+	...
+	
+	@Component
+	private class DummiestQryRowMapper implements RowMapper<Object> {
+		...
+	}
+}
+
+
+
+
