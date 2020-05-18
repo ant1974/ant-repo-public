@@ -66,14 +66,6 @@
 <!--  Starter for AOP   -->
         
 
-<!--  Starter for Actuators  
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-   Starter for Actuators   -->
-   
-        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -86,11 +78,14 @@
         	<artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
 -->        
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		
+
+<!--  Starter for Actuators  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+<!--  Starter for Actuators  -->
+
     </dependencies>
 
     <build>
