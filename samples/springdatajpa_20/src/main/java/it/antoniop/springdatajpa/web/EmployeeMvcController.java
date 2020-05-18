@@ -27,15 +27,6 @@ public class EmployeeMvcController {
 	@Value("${app.message}")
 	private String welcomeMessage;
 
-	/*
-	@RequestMapping(path = "/welcomeProfile")
-	public String getWelcomeMessage(Model model) {
-		LOG.info("*AP* " + welcomeMessage);
-		model.addAttribute("welcomeMessage", welcomeMessage);
-		//
-		return getAllEmployees(model);
-	}*/
-	
 	
 	@Autowired
 	EmployeeService service;
