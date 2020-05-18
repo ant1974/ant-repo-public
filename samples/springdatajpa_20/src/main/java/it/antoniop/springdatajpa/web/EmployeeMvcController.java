@@ -3,7 +3,10 @@ package it.antoniop.springdatajpa.web;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,20 @@ import it.antoniop.springdatajpa.service.EmployeeService;
 @Controller
 @RequestMapping("/")
 public class EmployeeMvcController {
+	
+	Logger LOG = LoggerFactory.getLogger(EmployeeMvcController.class);
+	
+	
+	@Value("${app.message}")
+	private String welcomeMessage;
+
+	@RequestMapping(path = "/welcomeProfile")
+	public String getWelcomeMessage(Model model) {
+		LOG.info("*AP* " + welcomeMessage);
+		//
+		return getAllEmployees(model);
+	}
+	
 	
 	@Autowired
 	EmployeeService service;

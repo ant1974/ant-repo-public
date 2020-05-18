@@ -15,11 +15,16 @@
     <div class="card">
     <div class="card-body">
         <div th:switch="${employees}" class="container my-5">
-            <p class="my-5">
-                <a th:href="@{/edit}" class="btn btn-primary">
-                	<i class="fas fa-user-plus ml-2"> Add Employee </i>
-                </a>
-            </p>
+            <div>
+            	<span>
+				<p class="my-5">
+	                <a th:href="@{/edit}" class="btn btn-primary">
+	                	<i class="fas fa-user-plus ml-2"> Add Employee </i>
+	                </a>
+            	</p>
+            	</span>
+            	<span th:value="${welcomeMessage}"></span>
+            </div>
             <div class="col-md-10">
                 <h2 th:case="null">No record found !!</h2>
                 <div th:case="*">
