@@ -27,12 +27,14 @@ public class EmployeeMvcController {
 	@Value("${app.message}")
 	private String welcomeMessage;
 
+	/*
 	@RequestMapping(path = "/welcomeProfile")
 	public String getWelcomeMessage(Model model) {
 		LOG.info("*AP* " + welcomeMessage);
+		model.addAttribute("welcomeMessage", welcomeMessage);
 		//
 		return getAllEmployees(model);
-	}
+	}*/
 	
 	
 	@Autowired
@@ -41,7 +43,8 @@ public class EmployeeMvcController {
 	@RequestMapping
 	public String getAllEmployees(Model model) {
 		List<EmployeeEntity> list = service.getAllEmployees();
-
+		LOG.info("*AP* " + welcomeMessage);
+		model.addAttribute("welcomeMessage", welcomeMessage);
 		model.addAttribute("employees", list);
 		return "list-employees";
 	}

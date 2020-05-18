@@ -23,7 +23,10 @@
 	                </a>
             	</p>
             	</span>
-            	<span th:value="${welcomeMessage}"></span>
+            	<span>
+            		<table><tr><td th:text="${welcomeMessage}"></td></tr></table>
+            	</span>
+            	<hr/>
             </div>
             <div class="col-md-10">
                 <h2 th:case="null">No record found !!</h2>
