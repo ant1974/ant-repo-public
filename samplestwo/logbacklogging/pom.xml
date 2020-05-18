@@ -36,8 +36,8 @@
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
 				<!--   NO TOMCAT !!!!!!!!!!!!!  -->
-				
 			</exclusions>
+				
 		</dependency>
 
 		<dependency>

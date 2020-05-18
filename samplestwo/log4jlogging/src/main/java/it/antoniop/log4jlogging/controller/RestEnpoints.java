@@ -26,9 +26,8 @@ public class RestEnpoints {
 
 
     @RequestMapping("/defaultCourse")
-    public Course getDefaultCourse(@RequestParam(value = "name", defaultValue = "Calculus", required = false) String name,
-                                   @RequestParam(value = "credits", defaultValue = "38", required = false) int credits) {
-		return new Course((name == null ? cName : name), credits);
+    public Course getDefaultCourse() {
+		return new Course(cName, credits);
     }
 
     @RequestMapping("/gethierarchical")
