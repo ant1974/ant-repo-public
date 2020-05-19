@@ -26,14 +26,14 @@ import org.springframework.context.ApplicationContext;
  * There are five types of advice in aspectj AOP.
  * <br>&nbsp;
  * <ul>
- * 	   <li><b>@Before</b>: Advice that executes before a join point, but which does not have the ability to prevent execution flow proceeding to the join point (unless it throws an exception).
- * 	   
+ *     <li><b>@Before</b>: Advice that executes before a join point, but which does not have the ability to prevent execution flow proceeding to the join point (unless it throws an exception).
+ *     
  *     <li><b>@AfterReturning</b>: Advice to be executed after a join point completes normally.
- * 	   
+ *     
  *     <li><b>@AfterThrowing</b>: Advice to be executed if a method exits by throwing an exception.
- * 	   
+ *     
  *     <li><b>@After</b>: Advice to be executed regardless of the means by which a join point exits (normal or exceptional return).
- * 	   
+ *     
  *     <li><b>@Around</b>: Advice that surrounds a join point such as a method invocation.
  * </ul>
  * 
@@ -46,9 +46,9 @@ public class SpringaopdemoApplication {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = SpringApplication.run(SpringaopdemoApplication.class, args);
 
-        for (String name: applicationContext.getBeanDefinitionNames()) {
-            System.out.println(name);
-        }
+		for (String name: applicationContext.getBeanDefinitionNames()) {
+			System.out.println(name);
+		}
 	}
 
 }
