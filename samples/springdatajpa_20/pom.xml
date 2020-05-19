@@ -32,15 +32,15 @@
 <!--   **************** Start  Added by myself !!! ***************  -->
 <!--   Using  mariadb-java-client  NOT  mysql-connector-java  that is GPL licensed         -->
 		<dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
 			<scope>runtime</scope>
         </dependency>
         
  		<dependency>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-thymeleaf</artifactId>
-      </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 <!--   ***************** End   Added by myself !!! ***************  -->  
 
 		<dependency>
