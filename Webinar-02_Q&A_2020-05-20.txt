@@ -43,10 +43,10 @@ public class CommandLineRunnerBean1 implements CommandLineRunner {
 
 @Component
 @Order(2)
-public class ApplicationRunnerBean1 implements ApplicationRunner {
+public class CommandLineRunnerBean2 implements CommandLineRunner {
 	@Override
-	public void run(ApplicationArguments arg0) throws Exception {
-		System.out.println("ApplicationRunnerBean 1");
-	}
+	public void run(String... args) {
+    	System.out.println("CommandLineRunnerBean 2");
+    }
 }
 
