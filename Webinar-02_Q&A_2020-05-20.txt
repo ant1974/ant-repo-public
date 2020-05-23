@@ -1,0 +1,28 @@
+﻿DOMANDE
+=============
+
+18:17
+[DOMANDA] Una info sui properties il file di properties interno è quello con priorità più bassa di lettura.Per esempio si può mettere un properties diverso dello stesso profilo attivo alla stessa directory del jar e sovrascrive la configurazione interna?
+----
+Sì confermo, si può fare.
+Doc al link
+https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config
+ed esempi ai link:
+https://stackoverflow.com/questions/27770852/spring-boot-external-application-properties
+https://javabeat.net/spring-boot-external-configurations/
+
+ 
+
+18:48
+[DOMANDA] Quanto impatta sulle prestazioni la Aop?
+----
+Rallenta lo startup della application (Runtime Weaving all'avvio della Spring/Spring Boot app), ma non il suo uso a runtime.
+https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#aop-aj-ltw
+https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop-proxying
+https://www.baeldung.com/spring-aop-vs-aspectj
+ 
+
+19:09
+[DOMANDA]  Il codice di cui la classe che estende CommandLineRunner in che punto del ciclo di vita della applicazione viene eseguito? prima/dopo inizializzazione bean?
+----
+Dopo l'inizializzazione dei bean trovati con Component scan/Auto configuration ma prima dell'esecuzione del metodo main() della classe annotata con @SpringBootApplication
