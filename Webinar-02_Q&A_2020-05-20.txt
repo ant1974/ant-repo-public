@@ -35,7 +35,7 @@ Se avete piu' di una classe che implementa CommandLineRunner ne potete anche ord
 @Order(1)
 public class CommandLineRunnerBean1 implements CommandLineRunner {
     public void run(String... args) {
-    	System.out.println("CommandLineRunnerBean 1");
+        System.out.println("CommandLineRunnerBean 1");
     }
 }
 
@@ -44,9 +44,9 @@ public class CommandLineRunnerBean1 implements CommandLineRunner {
 @Component
 @Order(2)
 public class CommandLineRunnerBean2 implements CommandLineRunner {
-	@Override
-	public void run(String... args) {
-    	System.out.println("CommandLineRunnerBean 2");
+    @Override
+    public void run(String... args) {
+        System.out.println("CommandLineRunnerBean 2");
     }
 }
 
