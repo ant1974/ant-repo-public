@@ -26,3 +26,27 @@ https://www.baeldung.com/spring-aop-vs-aspectj
 [DOMANDA]  Il codice di cui la classe che estende CommandLineRunner in che punto del ciclo di vita della applicazione viene eseguito? prima/dopo inizializzazione bean?
 ----
 Dopo l'inizializzazione dei bean trovati con Component scan/Auto configuration ma prima dell'esecuzione del metodo main() della classe annotata con @SpringBootApplication
+Se avete piu' di una classe che implementa CommandLineRunner ne potete anche ordinare la esecuzione con la annotazione 
+
+@Order
+
+
+@Component
+@Order(1)
+public class CommandLineRunnerBean1 implements CommandLineRunner {
+    public void run(String... args) {
+    	System.out.println("CommandLineRunnerBean 1");
+    }
+}
+
+
+
+@Component
+@Order(2)
+public class ApplicationRunnerBean1 implements ApplicationRunner {
+	@Override
+	public void run(ApplicationArguments arg0) throws Exception {
+		System.out.println("ApplicationRunnerBean 1");
+	}
+}
+
