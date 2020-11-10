@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
+		<version>2.3.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.antoniop</groupId>
@@ -43,7 +43,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 			
-			<!--  Exclude    org.junit.vintage ..... JUnit 5 module to RUN tests using  JUnit 3 and JUnit4 API -->
+			<!--  Exclude    org.junit.vintage that is a "JUnit 5 module" to RUN tests using  JUnit 3 and JUnit4 API -->
 			<exclusions>
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
