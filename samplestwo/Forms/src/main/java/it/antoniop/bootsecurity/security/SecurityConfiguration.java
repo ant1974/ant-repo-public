@@ -14,7 +14,16 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    private UserPrincipalDetailsService userPrincipalDetailsService;
+
+    private static final String AUTH_ACCESS_TEST2 = "ACCESS_TEST2";
+
+	private static final String AUTH_ACCESS_TEST1 = "ACCESS_TEST1";
+
+	private static final String MANAGER_ROLE = "MANAGER";
+
+	private static final String ADMIN_ROLE = "ADMIN";
+    
+	private UserPrincipalDetailsService userPrincipalDetailsService;
 
     public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService) {
         this.userPrincipalDetailsService = userPrincipalDetailsService;
@@ -31,12 +40,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/profile/**").authenticated()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/management/**").hasAnyRole("ADMIN", "MANAGER")
-                .antMatchers("/api/public/test1").hasAuthority("ACCESS_TEST1")
-                .antMatchers("/api/public/test2").hasAuthority("ACCESS_TEST2")
-                .antMatchers("/api/public/users").hasRole("ADMIN")
-/*    */        .antMatchers("/actuator/**").hasRole("ADMIN")  /*    */
+                .antMatchers("/admin/**").hasRole(ADMIN_ROLE)
+                .antMatchers("/management/**").hasAnyRole(ADMIN_ROLE, MANAGER_ROLE)
+                .antMatchers("/api/public/test1").hasAuthority(AUTH_ACCESS_TEST1)
+                .antMatchers("/api/public/test2").hasAuthority(AUTH_ACCESS_TEST2)
+                .antMatchers("/api/public/users").hasRole(ADMIN_ROLE)
+/*    */        .antMatchers("/actuator/**").hasRole(ADMIN_ROLE)  /*    */
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/signin")
@@ -52,8 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
     }
 
-    @Bean
-    DaoAuthenticationProvider authenticationProvider(){
+    //  ... @Bean because of DbInit ... class
+    DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(this.userPrincipalDetailsService);
@@ -61,6 +70,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 
+
+    //  ... @Bean because of DbInit ... class      
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

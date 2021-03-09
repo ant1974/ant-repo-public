@@ -5,11 +5,25 @@ import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @SpringBootApplication Indicates a {@link Configuration configuration} class that declares one or more
+ * {@link Bean @Bean} methods and also triggers {@link EnableAutoConfiguration
+ * auto-configuration} and {@link ComponentScan component scanning}. This is a convenience
+ * annotation that is equivalent to declaring {@code @Configuration},
+ * {@code @EnableAutoConfiguration} and {@code @ComponentScan}.
+ * 
+ *
+ */
 @SpringBootApplication
 public class BootSecurityApplication {
 

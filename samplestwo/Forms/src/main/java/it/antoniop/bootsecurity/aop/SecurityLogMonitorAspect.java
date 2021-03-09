@@ -21,7 +21,6 @@ public class SecurityLogMonitorAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityLogMonitorAspect.class);
     
 
-    // @Before("execution(* it.antoniop.bootsecurity.security.UserPrincipalDetailsService.*(..))")
     @Before("execution(* it.antoniop.bootsecurity.db.UserRepository.find*(..))")
     public void beforeAdviceActingAsLogUserInMonitor(JoinPoint joinPoint)  {
         Object[] args = joinPoint.getArgs();
@@ -32,8 +31,8 @@ public class SecurityLogMonitorAspect {
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
         
-        StringBuffer sb = new StringBuffer();
-        sb.append(" *AP* @Before Advice \"Who's knocking at this door?\" .. ");
+        StringBuilder sb = new StringBuilder();
+        sb.append(" *@Before* Before Advice \"Who's knocking at this door?\" .. ");
         sb.append(" Somebody named '");
         sb.append(name);
         sb.append("'");
@@ -41,10 +40,12 @@ public class SecurityLogMonitorAspect {
         sb.append(className);
         sb.append(".");
         sb.append(methodName);
-        sb.append("() ] *AP*");
+        sb.append("() ] *@Before*");
         // //
-        LOGGER.info(sb.toString());
-    } 
+        if (LOGGER.isInfoEnabled()) {
+        	LOGGER.info(sb.toString());
+        }
+    }
 
    
     @AfterReturning(value = "execution(* it.antoniop.bootsecurity.security.UserPrincipalDetailsService.*(..))", returning = "result")
@@ -58,35 +59,39 @@ public class SecurityLogMonitorAspect {
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
         
-        StringBuffer sb = new StringBuffer();
-        sb.append(" *AP* @AfterReturning Advice (1) (Only return normally ... NOT when throwing an exception) ...  *AP* ");
-        LOGGER.info(sb.toString());
-        
-        String csvAuth = ""; 
+        StringBuilder sb = new StringBuilder();
+        sb.append(" *@AfterReturning* AfterReturning Advice (1) (Only return normally ... NOT when throwing an exception) ...  *@AfterReturning* ");
+        if (LOGGER.isInfoEnabled()) {
+        	LOGGER.info(sb.toString());
+        }
+        StringBuilder csvAuth = new StringBuilder();
+        String csvAuthStr = null;
         
         if (result!=null) {
             Collection<? extends GrantedAuthority> list = ((UserPrincipal) result).getAuthorities();
             for (GrantedAuthority grantedAuthority : list) {
-                csvAuth = csvAuth + grantedAuthority.getAuthority();
-                csvAuth = csvAuth + ",";
+            	csvAuth.append(csvAuth).append(grantedAuthority.getAuthority()).append(",");
             }
-            if (!csvAuth.isEmpty()) {
-                csvAuth = csvAuth.substring(0, csvAuth.lastIndexOf(","));
+            if (!csvAuth.toString().isEmpty()) {
+            	csvAuthStr = csvAuth.toString();
+            	csvAuthStr = csvAuthStr.substring(0, csvAuthStr.lastIndexOf(","));
             }
         }
         
         // 
-        sb = new StringBuffer();
-        sb.append(" *AP* @AfterReturning Advice (2) '");
+        sb = new StringBuilder();
+        sb.append(" *@AfterReturning* AfterReturning Advice (2) '");
         sb.append(name);
         sb.append("'");
-        sb.append(" had [" + csvAuth  +"] as a result when trying to log in calling:  [");
+        sb.append(" had [" + csvAuthStr  +"] as a result when trying to log in calling:  [");
         sb.append(className);
         sb.append(".");
         sb.append(methodName);
-        sb.append("() ] *AP* ");
+        sb.append("() ] *@AfterReturning* ");
         // //
-        LOGGER.info(sb.toString());
+        if (LOGGER.isInfoEnabled()) {
+        	LOGGER.info(sb.toString());
+        }
     }
     
 }

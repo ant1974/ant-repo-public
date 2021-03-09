@@ -7,15 +7,29 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StopWatch;
 
+
+/**
+ * 
+ * @Component Indicates that an annotated class is a "component".
+ * Such classes are considered as candidates for auto-detection
+ * when using annotation-based configuration and classpath scanning.
+ *
+ * <p>Other class-level annotations may be considered as identifying
+ * a component as well, typically a special kind of component:
+ * e.g. the {@link Repository @Repository} annotation or AspectJ's
+ * {@link org.aspectj.lang.annotation.Aspect @Aspect} annotation.
+ *
+ */
 @Aspect
 @Component
-public class SecurityAroundUserService {
+public class SecurityAroundUserServiceAspect {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityAroundUserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityAroundUserServiceAspect.class);
     
-    //@Around("execution(* it.antoniop.bootsecurity.security.*.*(..))")
+
     @Around("execution(* it.antoniop.bootsecurity.security.UserPrincipalDetailsService.*(..))")
     public Object profileAllMethods(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
@@ -41,18 +55,34 @@ public class SecurityAroundUserService {
         Object result = proceedingJoinPoint.proceed();
         stopWatch.stop();
 
-        // Log method execution time
-        StringBuffer sb = new StringBuffer();
-        sb.append(" *AP* Execution time of ");
+        StringBuilder sb = createTimeTraceMessage(className, methodName, stopWatch);
+        // //
+        if (LOGGER.isInfoEnabled()) {
+        	LOGGER.info(sb.toString());
+        }
+        
+
+        return result;
+    }
+
+
+    /*
+     * 
+     * @param className
+     * @param methodName
+     * @param stopWatch
+     * @return
+     */
+	private StringBuilder createTimeTraceMessage(String className, String methodName, StopWatch stopWatch) {
+		// Log method execution time
+        StringBuilder sb = new StringBuilder();
+        sb.append(" *AROUND* Execution time of ");
         sb.append(className);
         sb.append(".");
         sb.append(methodName);
         sb.append(" :: ");
         sb.append(stopWatch.getTotalTimeMillis());
-        sb.append(" ms *AP* ");
-        // //
-        LOGGER.info(sb.toString()); 
-
-        return result;
-    }
+        sb.append(" ms *AROUND* ");
+		return sb;
+	}
 }
