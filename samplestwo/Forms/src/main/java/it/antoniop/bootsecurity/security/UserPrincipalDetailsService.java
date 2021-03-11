@@ -1,5 +1,6 @@
 package it.antoniop.bootsecurity.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,7 +11,9 @@ import it.antoniop.bootsecurity.model.User;
 
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {
-    private UserRepository userRepository;
+    
+	@Autowired
+	private UserRepository userRepository;
 
     public UserPrincipalDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;

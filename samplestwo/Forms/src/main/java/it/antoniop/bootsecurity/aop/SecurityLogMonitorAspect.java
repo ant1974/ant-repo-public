@@ -31,22 +31,13 @@ public class SecurityLogMonitorAspect {
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
         
-        StringBuilder sb = new StringBuilder();
-        sb.append(" *@Before* Before Advice \"Who's knocking at this door?\" .. ");
-        sb.append(" Somebody named '");
-        sb.append(name);
-        sb.append("'");
-        sb.append(" is trying to log in calling:  [");
-        sb.append(className);
-        sb.append(".");
-        sb.append(methodName);
-        sb.append("() ] *@Before*");
-        // //
-        if (LOGGER.isInfoEnabled()) {
-        	LOGGER.info(sb.toString());
-        }
+        traceBeforeJointPointExec(name, className, methodName);
     }
 
+
+
+    
+    
    
     @AfterReturning(value = "execution(* it.antoniop.bootsecurity.security.UserPrincipalDetailsService.*(..))", returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result) {
@@ -78,12 +69,36 @@ public class SecurityLogMonitorAspect {
             }
         }
         
-        // 
-        sb = new StringBuilder();
+        writeAfterRetWithResultsTrace(name, className, methodName, csvAuthStr);
+    }
+
+
+
+	private void traceBeforeJointPointExec(String name, String className, String methodName) {
+		StringBuilder sb = new StringBuilder();
+        sb.append(" *@Before* Before Advice \"Who's knocking at this door?\" .. ");
+        sb.append(" Somebody named '");
+        sb.append(name);
+        sb.append("'");
+        sb.append(" is trying to log in calling:  [");
+        sb.append(className);
+        sb.append(".");
+        sb.append(methodName);
+        sb.append("() ] *@Before*");
+        // //
+        if (LOGGER.isInfoEnabled()) {
+        	LOGGER.info(sb.toString());
+        }
+	}
+    
+
+	private void writeAfterRetWithResultsTrace(String name, String className, String methodName, String csvAuthStr) {
+		// 
+		StringBuilder sb = new StringBuilder();
         sb.append(" *@AfterReturning* AfterReturning Advice (2) '");
         sb.append(name);
         sb.append("'");
-        sb.append(" had [" + csvAuthStr  +"] as a result when trying to log in calling:  [");
+        sb.append(" has auths [" + csvAuthStr  +"] as a result when trying to log in calling:  [");
         sb.append(className);
         sb.append(".");
         sb.append(methodName);
@@ -92,7 +107,11 @@ public class SecurityLogMonitorAspect {
         if (LOGGER.isInfoEnabled()) {
         	LOGGER.info(sb.toString());
         }
-    }
+	}
     
+    
+
+
+
 }
 

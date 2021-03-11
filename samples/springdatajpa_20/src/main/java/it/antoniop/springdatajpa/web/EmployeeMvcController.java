@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.antoniop.springdatajpa.exception.RecordNotFoundException;
 import it.antoniop.springdatajpa.model.EmployeeEntity;
@@ -21,7 +22,7 @@ import it.antoniop.springdatajpa.service.EmployeeService;
 @RequestMapping("/")
 public class EmployeeMvcController {
 	
-	Logger LOG = LoggerFactory.getLogger(EmployeeMvcController.class);
+	static final Logger LOG = LoggerFactory.getLogger(EmployeeMvcController.class);
 	
 	
 	@Value("${app.message}")
@@ -34,9 +35,12 @@ public class EmployeeMvcController {
 	@RequestMapping
 	public String getAllEmployees(Model model) {
 		List<EmployeeEntity> list = service.getAllEmployees();
-		LOG.info("*AP* " + welcomeMessage);
+		if (LOG.isInfoEnabled()) {
+			LOG.info(String.format(" getAllEmployees() is saying [%s]", welcomeMessage));
+		}
 		model.addAttribute("welcomeMessage", welcomeMessage);
 		model.addAttribute("employees", list);
+		// //
 		return "list-employees";
 	}
 
@@ -49,6 +53,7 @@ public class EmployeeMvcController {
 		else {
 			model.addAttribute("employee", new EmployeeEntity());
 		}
+		// //
 		return "add-edit-employee";
 	}
 
@@ -58,7 +63,8 @@ public class EmployeeMvcController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(path = "/createEmployee", method = RequestMethod.POST)
+	// @RequestMapping(path = "/createEmployee", method = RequestMethod.POST)
+	@PostMapping(path = "/createEmployee")
 	public String createOrUpdateEmployee(EmployeeEntity employee) throws RecordNotFoundException {
 		service.createOrUpdateEmployee(employee);
 		return "redirect:/";
