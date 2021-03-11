@@ -1,6 +1,6 @@
 package it.antoniop.springdatajpa.service;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,13 +23,10 @@ public class EmployeeService {
 	EmployeeRepository repository;
 
 	public List<EmployeeEntity> getAllEmployees() {
-		List<EmployeeEntity> employeeList = repository.findAll();
-
-		if (employeeList.size() > 0) {
-			return employeeList;
-		} else {
-			return new ArrayList<EmployeeEntity>();
-		}
+		// List<EmployeeEntity> employeeList = repository.findAll();
+		//
+		return repository.findAll();
+		
 	}
 
 	public EmployeeEntity getEmployeeById(Long id) throws RecordNotFoundException {
